@@ -1,0 +1,15 @@
+在Service层和Mapper层 ：
+要加注释：@Service @Mapper
+参数大于一个时，直接传对象 
+等于一个时，传参数
+简单的sql语句可以直接在Mapper层写@Select,@Insert,@Update,@Delete后跟相应语句
+复杂的（有多对一，一对多关系的）需要在resources文件夹下的mapper中写入同名的xml文件
+如果是Select语句要写resultMap
+（<association> 多对一 调用父表所在类的函数
+   <collection> 一对多 调用子表所在类的函数 ）
+
+在Controller层：
+要加注释：@RestController @RequestMapping(...)
+参数均为对象
+如果调用的参数只需一个属性，则使用对象的get方法获取相应属性
+均需抛出异常
