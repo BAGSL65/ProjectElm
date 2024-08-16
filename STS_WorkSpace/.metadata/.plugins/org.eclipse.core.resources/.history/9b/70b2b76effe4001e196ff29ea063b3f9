@@ -1,0 +1,34 @@
+server: 
+    port: 10200
+    
+logging:
+    level:
+        org.springframework: debug
+        com.neusoft.mapper: debug
+
+spring:
+    application: 
+        name: food-server
+    datasource:
+        username: root
+        password: 656565
+        url: jdbc:mysql://localhost:3306/springcloud_elm?characterEncoding=utf-8
+        driver-class-name: com.mysql.jdbc.Driver
+        
+#eureka配置
+eureka:
+  client:
+    service-url:
+    #将自己注册给指定的eureka server
+      defaultZone: http://eurekaServer13100:13100/eureka/,http://eurekaServer13101:13101/eureka/
+  instance: 
+    prefer-ip-address: true #使用IP地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #设置显示信息为IP地址+端口号
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.neusoft.po
+
+

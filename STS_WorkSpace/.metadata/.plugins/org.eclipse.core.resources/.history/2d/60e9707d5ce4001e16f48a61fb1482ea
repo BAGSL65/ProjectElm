@@ -1,0 +1,8 @@
+package com.neusoft.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name="food-server")
+public interface FoodFeignClient {
+	
+}

@@ -1,0 +1,49 @@
+package com.neusoft.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.neusoft.po.CommonResult;
+import com.neusoft.po.Orders;
+import com.neusoft.service.OrdersService;
+
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/OrdersController")
+public class OrdersController {
+
+	@Autowired
+	private OrdersService ordersService;
+	
+	@PostMapping("/createOrders/{userId}/{business}/{daId}/{orderTotal}")
+	public CommonResult<Integer> createOrders(
+					@PathVariable("userId") String userId,
+					@PathVariable("businessId") Integer businessId,
+					@PathVariable("daId") Integer daId,
+					@PathVariable("orderTotal") Double orderTotal
+					) throws Exception{
+		Orders param = new Orders();
+		param.setUserId(userId);
+		param.setBusinessId(businessId);
+		param.setDaId(daId);
+		param.setOrderTotal(orderTotal);
+		int result = ordersService.createOrders(param);
+		return new CommonResult(200,"success",result);
+	}
+	
+	@GetMapping("/getOrdersById")
+	public Orders getOrdersById(Orders orders) throws Exception{
+		return ordersService.getOrdersById(orders.getOrderId());
+	}
+	
+	@GetMapping("/listOrdersByUserId")
+	public List<Orders> listOrdersByUserId(Orders orders) throws Exception{
+		return ordersService.listOrdersByUserId(orders.getUserId());
+	}
+}

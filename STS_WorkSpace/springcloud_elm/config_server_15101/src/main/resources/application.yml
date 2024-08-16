@@ -1,0 +1,35 @@
+server:
+  port: 15101
+
+spring:
+   application:
+    name: config-server
+   cloud:
+    config:         #springcloud config相关配置
+      server:
+        git:
+          uri: https://gitee.com/break65/elm-scc.git #git远程仓库地址
+   #rabbitMQ的配置
+   rabbitmq: 
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+    
+#bus总线的配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh    #暴露bus-refresh节点，通过此节点进行刷新配置
+#eureka配置
+eureka:
+  client:
+    service-url:
+    #将自己注册给指定的eureka server
+      defaultZone: http://eurekaServer13100:13100/eureka/,http://eurekaServer13101:13101/eureka/
+  instance: 
+    prefer-ip-address: true #使用IP地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #设置显示信息为IP地址+端口号
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15

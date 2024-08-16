@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MyApplication.java&apos; to &apos;user_server_10100/src/main/java/com.neusoft&apos;&#x0D;&#x0A;- Original project: &apos;springcloud_demo&apos;&#x0D;&#x0A;- Destination element: &apos;user_server_10100/src/main/java/com.neusoft&apos;&#x0D;&#x0A;- Original element: &apos;MyApplication.java&apos;" description="Copy file" destination="=user_server_10100/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.neusoft" element1="provider_server_11001/src/main/java/com/neusoft/MyApplication.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1710337971835" units="0" version="1.0"/>
+</session>

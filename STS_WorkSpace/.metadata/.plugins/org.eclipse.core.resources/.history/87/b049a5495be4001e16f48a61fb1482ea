@@ -1,0 +1,5 @@
+package com.neusoft.feign;
+
+public interface FoodFeignClient {
+
+}

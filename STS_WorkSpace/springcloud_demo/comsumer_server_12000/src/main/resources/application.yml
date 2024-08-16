@@ -1,0 +1,40 @@
+server:
+  port: 12000
+  
+spring:
+  application:
+    name: consumer-server
+      
+#eureka配置
+eureka:
+  client:
+    service-url:
+    #将自己注册给指定的eureka server
+      defaultZone: http://eurekaServer13000:13000/eureka/,http://eurekaServer13001:13001/eureka/
+  instance: 
+    prefer-ip-address: true #使用IP地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #设置显示信息为IP地址+端口号
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+        
+#填要负载均衡的微服务名
+provider-server:
+  ribbon:
+    #设置负载均衡策略(轮询)
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    
+feign:
+  hystrix:
+    enabled: true #在feign中开启hystrix熔断机制
+  client:
+    config:
+      default:
+        connect-timeout: 5000 #这里默认为1000（1s) 
+        #如果不进行设置，就不会去调用provider11000的服务，可能原因是feign发现连接超时后就直接断开，所以没有触发hystrix的熔断机制
+hystrix:  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 ##这里默认为1000（1s) ，为hystrix的熔断超时时间设置
+  

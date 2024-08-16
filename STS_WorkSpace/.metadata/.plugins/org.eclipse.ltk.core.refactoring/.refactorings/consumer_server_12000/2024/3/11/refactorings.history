@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CommonResult.java&apos; to &apos;user_server_10100/src/main/java/com.neusoft.po&apos;&#x0D;&#x0A;- Original project: &apos;consumer_server_12000&apos;&#x0D;&#x0A;- Destination element: &apos;user_server_10100/src/main/java/com.neusoft.po&apos;&#x0D;&#x0A;- Original element: &apos;com.neusoft.po.CommonResult.java&apos;" description="Copy compilation unit" destination="=user_server_10100/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.neusoft.po" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.neusoft.po{CommonResult.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1710381207251" units="1" version="1.0"/>
+</session>
